@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.NONE)
-@Transactional
 public class CustomJpaRepositoryTest {
 
 	@Autowired
@@ -22,6 +21,7 @@ public class CustomJpaRepositoryTest {
 
 	@Test
 	public void testFindOneReturnsValue() {
+		System.out.println(employeeRepository.findAll().size());
 		Employee employee = employeeRepository.findOne(1);
 		assertNotNull(employee);
 		assertEquals(1, employee.getId().intValue());
@@ -29,12 +29,8 @@ public class CustomJpaRepositoryTest {
 
 	@Test
 	public void testFindOneReturnssfd() {
-		Employee employee = null;
-		try {
-			employee = employeeRepository.findOne(5);
-		} catch (RuntimeException e) {
-			e.printStackTrace();
-		}
+		Employee employee = employeeRepository.findOne(5);
+
 		assertNull(employee);
 
 	}

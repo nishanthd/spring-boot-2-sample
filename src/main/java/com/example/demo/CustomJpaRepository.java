@@ -7,7 +7,7 @@ import org.springframework.data.repository.NoRepositoryBean;
 public interface CustomJpaRepository<T, ID> extends JpaRepository<T, ID> {
 
 	default T findOne(ID id) {
-		return getOne(id);
+		return this.findById(id).orElse(null);
 	}
 
 }
